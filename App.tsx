@@ -5,6 +5,9 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
+import { ThemeProvider } from 'styled-components'
+import {MyThemeType} from './themes/MyTheme'
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
@@ -14,8 +17,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
+        <ThemeProvider theme={MyThemeType}>
         <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+          <StatusBar />
+        </ThemeProvider>
       </SafeAreaProvider>
     );
   }
